@@ -1,8 +1,7 @@
-from pico2d import SDL_KEYDOWN, SDLK_SPACE, SDL_KEYUP, SDLK_RIGHT, SDLK_LEFT
+from pico2d import *
 from state_machine import StateMachine
-from pico2d import get_time
-from pico2d import load_image
 import game_framework
+
 
 def space_down(e):
     return e[0] == 'INPUT' and e[1].type == SDL_KEYDOWN and e[1].key == SDLK_SPACE
@@ -66,10 +65,26 @@ class DeliveryMan:
 
     def draw(self):
         self.state_machine.draw()
+        # 디버깅용 바운딩 박스
+        # draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         self.state_machine.handle_state_event(('INPUT', event))
 
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+
+    def handle_collision(self, group, other):
+        # 충돌 처리: 배달원의 맵이동, x좌표 변환
+        if group == 'deliveryman:background':
+            # other는 MapManager 또는 BaseMap 인스턴스일 수 있으므로 직접 속성 접근 금지
+            left, _, right, _ = other.get_bb()
+            # 왼쪽 끝 충돌 → 위치 보정
+            if self.x < left + 10:
+                self.x = left + 60
+            # 오른쪽 끝 충돌 → 위치 보정
+            elif self.x > right - 10:
+                self.x = right - 60
 
 class Idle:
     def __init__(self, deliveryman):
@@ -148,7 +163,3 @@ class Sleep:
             self.image[frame].composite_draw(-3.141592 / 2, '', self.deliveryman.x - 25,self.deliveryman.y - 25, 25, 150)
         elif self.deliveryman.face_dir == -1:
             self.image[frame].composite_draw(3.141592/2, 'h', self.deliveryman.x + 25, self.deliveryman.y - 25, 25, 150)
-
-
-
-
