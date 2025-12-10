@@ -4,7 +4,7 @@
 a = Analysis(
     ['main.py'],
     pathex=[],
-    binaries=[],
+    binaries=[('C:\\Users\\서상혁\\Downloads\\SDL2-2.0.28\\bin\\SDL2.dll', 'pico2d'), ('C:\\Users\\서상혁\\Downloads\\SDL2-2.0.28\\bin\\SDL2_image.dll', 'pico2d')],
     datas=[],
     hiddenimports=[],
     hookspath=[],
@@ -29,7 +29,7 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=False,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
