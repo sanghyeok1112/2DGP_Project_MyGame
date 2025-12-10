@@ -4,7 +4,7 @@
 a = Analysis(
     ['main.py'],
     pathex=[],
-    binaries=[('C:\\Users\\서상혁\\Downloads\\SDL2-2.0.28\\bin\\SDL2.dll', 'pico2d'), ('C:\\Users\\서상혁\\Downloads\\SDL2-2.0.28\\bin\\SDL2_image.dll', 'pico2d')],
+    binaries=[('C:\\Users\\서상혁\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sdl2dll\\dll\\SDL2.dll', 'pico2d'), ('C:\\Users\\서상혁\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sdl2dll\\dll\\SDL2_image.dll', 'pico2d'), ('C:\\Users\\서상혁\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sdl2dll\\dll\\SDL2_ttf.dll', 'pico2d'), ('C:\\Users\\서상혁\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sdl2dll\\dll\\SDL2_mixer.dll', 'pico2d'), ('C:\\Users\\서상혁\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sdl2dll\\dll\\SDL2_gfx.dll', 'pico2d')],
     datas=[],
     hiddenimports=[],
     hookspath=[],
